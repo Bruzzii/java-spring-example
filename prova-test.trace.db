@@ -1,0 +1,6 @@
+2025-07-05 19:08:45.812393+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILM" already exists; SQL statement:
+CREATE TABLE film ( id INT AUTO_INCREMENT PRIMARY KEY, nome VARCHAR(255) NOT NULL, anno INT NOT NULL, genere VARCHAR(100) NOT NULL, rating DECIMAL(3,1) NOT NULL ) [42101-232]
+2025-07-05 19:10:05.128783+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]6"; SQL statement:
+6 [42000-232]

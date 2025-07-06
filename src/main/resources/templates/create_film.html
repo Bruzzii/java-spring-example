@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <form th:action="@{/api/film/create}" th:method="post">
+          <input type="text" name="nome" placeholder="Nome" required>
+          <input type="text" name="genere" placeholder="Genere" required>
+          <input type="number" name="anno" placeholder="Anno" required>
+          <input type="number" step="0.1" min="0" max="10" name="rating" placeholder="Rating" required>
+          <button type="submit">Crea</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

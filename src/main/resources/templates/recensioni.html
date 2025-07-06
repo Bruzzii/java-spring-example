@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recensioni</title>
+      <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+</head>
+<body>
+  <div class="container">
+    <div class="grid">
+      <div>
+        <h1 th:text="${film.nome}"></h1>
+      </div>
+      <div>
+        <a th:href="@{/}">Home</a>
+      </div>
+    </div>
+
+      <br>
+      <div>
+        <form th:action="@{/api/recensione/create}" th:method="post">
+          <input type="text" name="titolo" placeholder="Titolo" required>
+          <input type="text" name="descrizione" placeholder="Descrizione" required>
+          <input type="number" step="0.1" min="0" max="10" name="rating" placeholder="Rating" required>
+          <input type="number" name="film" th:value="${film.id}" required hidden>
+          <button type="submit">Crea</button>
+        </form>
+      </div>
+      <br>
+      <div>
+        <table>
+          <thead>
+            <th>Id</th>
+            <th>Titolo</th>
+            <th>Descrizione</th>
+            <th>Rating</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <tr th:each="recensione: ${film.recensioni}">
+              <td th:text="${recensione.id}"></td>
+              <td th:text="${recensione.titolo}"></td>
+              <td th:text="${recensione.descrizione}"></td>
+              <td th:text="${recensione.rating}"></td>
+              <td>
+                <a th:href="@{/api/recensione/delete/{id}(id=${recensione.id})}">Elimina</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</body>
+</html>

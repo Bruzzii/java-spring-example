@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>HomePage</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
@@ -11,17 +11,17 @@
   </head>
   <body>
     <div class="container">
-      <!-- <div>
-        <form th:action="@{/api/film/create}" th:method="post">
-          <input type="text" name="nome" placeholder="Nome" required>
-          <input type="text" name="genere" placeholder="Genere" required>
-          <input type="number" name="anno" placeholder="Anno" required>
-          <input type="number" step="0.1" min="0" max="10" name="rating" placeholder="Rating" required>
-          <button type="submit">Crea</button>
-        </form>
-      </div> -->
+      <div th:if="${message}" class="notification">
+        <button th:text="${message}" disabled></button>
+      </div>
 
-      <div>
+      <div class="grid">
+        <div>
+          <a th:href="@{/create/film}">Create Film</a>
+        </div>
+      </div>
+
+      <!-- <div>
         <form th:action="@{/api/film/update}" method="">
           <input type="number" name="id" placeholder="Id" required>
           <input type="text" name="nome" placeholder="Nome" required>
@@ -30,7 +30,7 @@
           <input type="number" step="0.1" min="0" max="10" name="rating" placeholder="Rating" required>
           <button type="submit">Crea</button>
         </form>
-      </div>
+      </div> -->
 
       <div>
         <table>
@@ -47,7 +47,10 @@
               <td th:text="${film.genere}"></td>
               <td th:text="${film.anno}"></td>
               <td th:text="${film.rating}"></td>
-              <td><a th:href="@{/api/film/delete/{id}(id=${film.id})}">Elimina</a></td>
+              <td>
+                <a th:href="@{/api/film/delete/{id}(id=${film.id})}">Elimina</a>
+                <a th:href="@{/film/{id}/recensioni/(id=${film.id})}">Recensioni</a>
+              </td>
             </tr>
           </tbody>
         </table>
